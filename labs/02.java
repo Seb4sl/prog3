@@ -66,20 +66,20 @@ public class MATRICES {
              }
              
              if(i==1){
-                 System.out.println("       +       ");
+                 System.out.print("       +       ");
                  
              }else{
-                 System.out.println("               ");                 
+                 System.out.print("               ");                 
                  
              }
              for(int j = 0 ; j<segundaMatriz.length; j++){
-                 System.out.print(" [ " +primeraMatriz[i][j] + " ]");   
+                 System.out.print(" [ " +segundaMatriz[i][j] + " ]");   
              }
              if(i==1){
-                 System.out.println("       =       ");
+                 System.out.print("       =       ");
                  
              }else{
-                 System.out.println("               ");                 
+                 System.out.print("               ");                 
                  
              }
               for(int j = 0 ; j<sumaResultado.length; j++){
@@ -87,5 +87,70 @@ public class MATRICES {
              }           
              System.out.println("");
         }
+        
+        System.out.println("");
+        
+        
+        
+        System.out.println("La resta de las matrices es ");
+        for(int i = 0 ; i<primeraMatriz.length; i++){
+             for(int j = 0 ; j<primeraMatriz.length; j++){
+                 System.out.print(" [ " +primeraMatriz[i][j] + " ]");   
+             }
+             
+             if(i==1){
+                 System.out.print("       -       ");
+                 
+             }else{
+                 System.out.print("               ");                 
+                 
+             }
+             for(int j = 0 ; j<segundaMatriz.length; j++){
+                 System.out.print(" [ " +segundaMatriz[i][j] + " ]");   
+             }
+             if(i==1){
+                 System.out.print("       =       ");
+                 
+             }else{
+                 System.out.print("               ");                 
+                 
+             }
+              for(int j = 0 ; j<restaResultado.length; j++){
+                 System.out.print(" [ " +restaResultado[i][j] + " ]");   
+             }           
+             System.out.println("");
+        }
+                System.out.println("");
+                
+                
+        System.out.println("La multiplicacion de las matrices es ");
+        for(int i = 0 ; i<primeraMatriz.length; i++){
+             for(int j = 0 ; j<primeraMatriz.length; j++){
+                 System.out.print(" [ " +primeraMatriz[i][j] + " ]");   
+             }
+             
+             if(i==1){
+                 System.out.print("       *       ");
+                 
+             }else{
+                 System.out.print("               ");                 
+                 
+             }
+             for(int j = 0 ; j<segundaMatriz.length; j++){
+                 System.out.print(" [ " +segundaMatriz[i][j] + " ]");   
+             }
+             if(i==1){
+                 System.out.print("       =       ");
+                 
+             }else{
+                 System.out.print("               ");                 
+                 
+             }
+              for(int j = 0 ; j<multResultado.length; j++){
+                 System.out.print(" [ " +multResultado[i][j] + " ]");   //ASI NO SE MULTIPLICA!!!!! (PREGUNTAR AL PROFE)
+             }           
+             System.out.println("");
+        }
+        
     }
 }
