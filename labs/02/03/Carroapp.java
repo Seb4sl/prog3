@@ -1,19 +1,23 @@
 //Venta de autos Juan Sebastian Larrota Correa (7004169)
-import java.util.Comparator;
+import javax.swing.*;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Font;
 public class CarrosApp extends javax.swing.JFrame {
     
-    int i = 0;
+    int i = 0; // Contador de carros agregados
     DefaultTableModel modelo;
+    
 
-    public class Carro {
+    public class Carro { // Declaración de la clase "Carro" para almacenar información sobre los autos.
         String marca;
         int modelo;
         String color;
         int kilometraje;
 
-        public Carro(String marca, int modelo, String color, int kilometraje) {
+        public Carro(String marca, int modelo, String color, int kilometraje) { // Constructor de la clase Carro para inicializar sus atributos.
             this.marca = marca;
             this.modelo = modelo;
             this.color = color;
@@ -21,10 +25,10 @@ public class CarrosApp extends javax.swing.JFrame {
         }
     }
 
-    Carro[] carros = new Carro[10];
+    Carro[] carros = new Carro[10]; // Arreglo de objetos Carro para almacenar los autos.
 
 public CarrosApp() {
-    initComponents();
+    initComponents(); //Inicializacion para la tabña y sus caracteristicas
     modelo = new DefaultTableModel();
     modelo.addColumn("Marca");
     modelo.addColumn("Modelo");
@@ -46,12 +50,12 @@ public CarrosApp() {
         }
     }
 
-    public static void merge(Carro[] arr, int left, int middle, int right) {
+    public static void merge(Carro[] arr, int left, int middle, int right) { //Se encarga de combinar dos subarreglos ordenados en uno solo, manteniendo la propiedad de orden.
         int n1 = middle - left + 1;
-        int n2 = right - middle;
+        int n2 = right - middle; //calculan las longitudes de los dos subarreglos que se van a combinar.
 
         Carro[] leftArr = new Carro[n1];
-        Carro[] rightArr = new Carro[n2];
+        Carro[] rightArr = new Carro[n2]; //Se crean dos nuevos arreglos de objetos para almacenar temporalmente los subarreglos izquierdo y derecho.
 
         for (int i = 0; i < n1; ++i) {
             leftArr[i] = arr[left + i];
@@ -62,7 +66,7 @@ public CarrosApp() {
 
         int i = 0, j = 0;
         int k = left;
-        while (i < n1 && j < n2) {
+        while (i < n1 && j < n2) { // comparar los elementos y combinarlos en el arreglo "arr"
             if (leftArr[i].modelo <= rightArr[j].modelo) {
                 arr[k] = leftArr[i];
                 i++;
@@ -83,22 +87,30 @@ public CarrosApp() {
             arr[k] = rightArr[j];
             j++;
             k++;
-        }
+        } //  copiar cualquier elemento restante si alguno de los subarreglos tenga elementos sin procesar.
     }
 
-    private void initComponents() {
+    private void initComponents() { //Componentes de GUI
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaCarros = new javax.swing.JTable();
         marcaField = new javax.swing.JTextField();
         modeloField = new javax.swing.JTextField();
         colorField = new javax.swing.JTextField();
         kilometrajeField = new javax.swing.JTextField();
+        getContentPane().setBackground(new java.awt.Color(4, 180, 174)); // Cambia el color de fondo
         agregarButton = new javax.swing.JButton();
         limpiarButton = new javax.swing.JButton();
         eliminarTodoButton = new javax.swing.JButton();
         ordenarModeloButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-
+        agregarButton.setBackground(new java.awt.Color(255, 255, 255));
+        agregarButton.setForeground(new java.awt.Color(33, 11, 97));
+        limpiarButton.setBackground(new java.awt.Color(255, 255, 255));
+        limpiarButton.setForeground(new java.awt.Color(33, 11, 97));
+        eliminarTodoButton.setBackground(new java.awt.Color(255, 255, 255));
+        eliminarTodoButton.setForeground(new java.awt.Color(33, 11, 97));
+        ordenarModeloButton.setBackground(new java.awt.Color(255, 255, 255));
+        ordenarModeloButton.setForeground(new java.awt.Color(33, 11, 97));
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         tablaCarros.setModel(new javax.swing.table.DefaultTableModel(
@@ -137,7 +149,7 @@ public CarrosApp() {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 24));
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 22));
         jLabel1.setText("Concesionario Larrota-911"); // Cambiar el texto aquí
 
 
@@ -267,4 +279,3 @@ public CarrosApp() {
     private javax.swing.JButton ordenarModeloButton;
     private javax.swing.JTable tablaCarros;
 }
-
