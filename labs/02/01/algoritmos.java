@@ -24,3 +24,55 @@ public class OrdenadorDeNumeros {
                 System.out.println("adios :)");
                 break;
             }
+            
+            System.out.print("Ingrese la cantidad de números del 100 al 10000m que desea ordenar: ");
+            int cantidad = entrada.nextInt();
+
+            double[] arreglo = new double[cantidad];
+            for (int i = 0; i < cantidad; i++) {
+                arreglo[i] = aleatorio.nextDouble(); 
+            }
+
+            long tiempoInicio;
+            long tiempoFinal;
+            long tiempoTranscurrido;
+
+            switch (opcion) {
+                case 1:
+                    tiempoInicio = System.nanoTime();
+                    ordenarBurbuja(arreglo);
+                    tiempoFinal = System.nanoTime();
+                    tiempoTranscurrido = tiempoFinal - tiempoInicio;
+                    mostrarTabla("Burbuja", cantidad, tiempoTranscurrido);
+                    break;
+                case 2:
+                    tiempoInicio = System.nanoTime();
+                    ordenarInsercion(arreglo);
+                    tiempoFinal = System.nanoTime();
+                    tiempoTranscurrido = tiempoFinal - tiempoInicio;
+                    mostrarTabla("Inserción", cantidad, tiempoTranscurrido);
+                    break;
+                case 3:
+                    tiempoInicio = System.nanoTime();
+                    ordenarSeleccion(arreglo);
+                    tiempoFinal = System.nanoTime();
+                    tiempoTranscurrido = tiempoFinal - tiempoInicio;
+                    mostrarTabla("Selección", cantidad, tiempoTranscurrido);
+                    break;
+                case 4:
+                    tiempoInicio = System.nanoTime();
+                    mergesort(arreglo, 0, arreglo.length - 1);
+                    tiempoFinal = System.nanoTime();
+                    tiempoTranscurrido = tiempoFinal - tiempoInicio;
+                    mostrarTabla("Mergesort", cantidad, tiempoTranscurrido);
+                    break;
+                default:
+                    System.out.println("Opción no válida, intente de nuevo.");
+                    continue;
+            }
+        }
+
+        entrada.close();
+    }
+
+  
