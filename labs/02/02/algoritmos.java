@@ -76,6 +76,7 @@ public class OrdenadorDeNumeros {
     }
 
   
+
     // Ordenamiento Burbuja
     public static void ordenarBurbuja(double[] arreglo) {
         int n = arreglo.length;
@@ -119,4 +120,64 @@ public class OrdenadorDeNumeros {
             arreglo[i] = valorTemporal;
         }
     }
-//Actualizacion Total de la carpeta, es por eso que esta tan avanzada
+
+    // Ordenamiento Mergesort
+    public static void mergesort(double[] arreglo, int inicio, int fin) {
+        if (inicio < fin) {
+            int medio = (inicio + fin) / 2;
+            mergesort(arreglo, inicio, medio);
+            mergesort(arreglo, medio + 1, fin);
+            merge(arreglo, inicio, medio, fin);
+        }
+    }
+
+    // Método para combinar dos subarreglos ordenados
+    public static void merge(double[] arreglo, int inicio, int medio, int fin) {
+        int n1 = medio - inicio + 1;
+        int n2 = fin - medio;
+
+        double[] izquierda = new double[n1];
+        double[] derecha = new double[n2];
+
+        for (int i = 0; i < n1; i++) {
+            izquierda[i] = arreglo[inicio + i];
+        }
+        for (int j = 0; j < n2; j++) {
+            derecha[j] = arreglo[medio + 1 + j];
+        }
+
+        int i = 0, j = 0;
+        int k = inicio;
+        while (i < n1 && j < n2) {
+            if (izquierda[i] <= derecha[j]) {
+                arreglo[k] = izquierda[i];
+                i++;
+            } else {
+                arreglo[k] = derecha[j];
+                j++;
+            }
+            k++;
+        }
+
+        while (i < n1) {
+            arreglo[k] = izquierda[i];
+            i++;
+            k++;
+        }
+
+        while (j < n2) {
+            arreglo[k] = derecha[j];
+            j++;
+            k++;
+        }
+    }
+
+    // Mostrar los resultados 
+    public static void mostrarTabla(String algoritmo, int cantidad, long tiempo) {
+
+        System.out.format("%nAlgoritmo usado: "+algoritmo+ "%n");
+        System.out.format("%nCantidad de numeros: "+cantidad+ "%n");
+        System.out.format("%nTiempo en ordenar los numeros: "+tiempo+ "%n");
+        
+    }
+}
