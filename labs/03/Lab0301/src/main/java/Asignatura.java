@@ -25,10 +25,10 @@ class Asignatura
         {
             if (otraAsignatura.Horario.contains(diaHora)) 
             {
-                return true; // Hay un cruce de horario
+                return true; 
             }
         }
-        return false; // No hay cruces de horario
+        return false; 
     }
 
     @Override
