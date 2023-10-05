@@ -3,10 +3,10 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.Scanner;
 
-class Temporizador extends TimerTask {
+class TemporizadorTarea extends TimerTask {
     private String mensaje;
 
-    public Temporizador(String mensaje) {
+    public TemporizadorTarea(String mensaje) {
         this.mensaje = mensaje;
     }
 
@@ -16,12 +16,13 @@ class Temporizador extends TimerTask {
     }
 }
 
-public class Main {
+public class TemporizadorApp {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Timer timer = new Timer();
 
         while (true) {
+            System.out.println("==== Temporizador App ====");
             System.out.println("1. Crear temporizador");
             System.out.println("2. Detener temporizador");
             System.out.println("3. Reiniciar temporizador");
@@ -33,13 +34,13 @@ public class Main {
             switch (opcion) {
                 case 1:
                     System.out.print("Ingrese el mensaje del temporizador: ");
-                    String mensaje = scanner.nextLine();
+                    String mensajeTemporizador = scanner.nextLine();
                     System.out.print("Ingrese el tiempo de espera en milisegundos: ");
                     long tiempoEspera = scanner.nextLong();
                     scanner.nextLine(); // Consumir el salto de línea
 
-                    Temporizador temporizador = new Temporizador(mensaje);
-                    timer.schedule(temporizador, tiempoEspera);
+                    TemporizadorTarea tarea = new TemporizadorTarea(mensajeTemporizador);
+                    timer.schedule(tarea, tiempoEspera);
                     break;
                 case 2:
                     System.out.print("Ingrese el mensaje del temporizador a detener: ");
