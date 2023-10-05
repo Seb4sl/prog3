@@ -1,4 +1,3 @@
-//Juan Sebastian Larrota Correa y Luis alejandro zipaquira
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.Scanner;
@@ -53,3 +52,32 @@ public class TemporizadorApp {
 
                     System.out.println("Temporizador detenido.");
                     break;
+                case 3:
+                    System.out.print("Ingrese el mensaje del temporizador a reiniciar: ");
+                    String mensajeReiniciar = scanner.nextLine();
+                    timer.purge(); // Limpiar tareas canceladas en el pasado
+                    timer.cancel(); // Cancelar el temporizador actual
+
+                    // Reiniciar el temporizador después de detenerlo
+                    timer = new Timer();
+
+                    System.out.print("Ingrese el nuevo tiempo de espera en milisegundos: ");
+                    long nuevoTiempoEspera = scanner.nextLong();
+                    scanner.nextLine(); // Consumir el salto de línea
+
+                    TemporizadorTarea nuevoTarea = new TemporizadorTarea(mensajeReiniciar);
+                    timer.schedule(nuevoTarea, nuevoTiempoEspera);
+
+                    System.out.println("Temporizador reiniciado.");
+                    break;
+                case 4:
+                    timer.cancel(); // Cancelar todos los temporizadores antes de salir
+                    scanner.close();
+                    System.exit(0);
+                    break;
+                default:
+                    System.out.println("Opción no válida. Intente de nuevo.");
+            }
+        }
+    }
+}
